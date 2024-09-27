@@ -240,16 +240,14 @@ app.MapGet("/veiculos", ([FromQuery] int? pagina, [FromServices] IVeiculoServico
 {
     var veiculos = veiculoServico.Todos(pagina);
     return Results.Ok(veiculos);
-}).RequireAuthorization(new AuthorizeAttribute { Roles = "Adm" })
-.RequireAuthorization(new AuthorizeAttribute { Roles = "Editor" }).RequireAuthorization().WithTags("Veiculos");
+}).RequireAuthorization(new AuthorizeAttribute { Roles = "Adm,Editor" }).RequireAuthorization().WithTags("Veiculos");
 
 app.MapGet("/veiculos/{id}", ([FromRoute] int id, [FromServices] IVeiculoServico veiculoServico) =>
 {
     var veiculo = veiculoServico.BuscaPorId(id);
     if (veiculo == null) return Results.NotFound("Veiculo não encontrado");
     return Results.Ok(veiculo);
-}).RequireAuthorization(new AuthorizeAttribute { Roles = "Adm" })
-.RequireAuthorization(new AuthorizeAttribute { Roles = "Editor" }).RequireAuthorization().WithTags("Veiculos");
+}).RequireAuthorization(new AuthorizeAttribute { Roles = "Adm,Editor" }).RequireAuthorization().WithTags("Veiculos");
 
 app.MapPut("/veiculos/{id}", ([FromRoute] int id, [FromBody] VeiculoDTO veiculoDTO, [FromServices] IVeiculoServico veiculoServico) =>
 {
