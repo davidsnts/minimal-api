@@ -6,16 +6,16 @@ namespace minimal_api.dominio.entidades
 {
     public class Administrador
     {
+        public Administrador()
+        {
+            
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        [Required]
-        [EmailAddress]
-        public required string Email { get; set; }
-        [Required]
-        public required string Senha { get; set; }
-        [Required]
-        public required string Perfil { get; set; }
+        public int Id { get; set; }        
+        public string Email { get; set; }        
+        public string Senha { get; set; }        
+        public string Perfil { get; set; }
        
     }
 }

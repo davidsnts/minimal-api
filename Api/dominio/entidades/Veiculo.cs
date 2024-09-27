@@ -10,9 +10,9 @@ namespace minimal_api.dominio.entidades
         public int Id { get; set; }
         [Required]
         [EmailAddress]
-        public required string Nome { get; set; }
+        public string Nome { get; set; }
         [Required]
-        public required string Marca { get; set; }
+        public string Marca { get; set; }
         [Required]
         public int Ano { get; set; }
 
